@@ -134,7 +134,7 @@ if [ -n "${BOM_SPEC}" ] && [ "${BOM_SPEC}" != "${DT_MAX_SPEC}" ] &&
   if jq -c --arg v "${DT_MAX_SPEC}" \
        '.specVersion = $v
         | if has("$schema")
-          then .["$schema"] = "http://cyclonedx.org/schema/bom-\($v).schema.json"
+          then .["$schema"] = "https://cyclonedx.org/schema/bom-\($v).schema.json"
           else . end' \
        "${UPLOAD_BOM}" > "${DOWNGRADED}" 2>/dev/null && [ -s "${DOWNGRADED}" ]; then
     echo "Dependency-Track: BOM declares CycloneDX ${BOM_SPEC}; the server accepts up to ${DT_MAX_SPEC} — relabelling for upload."
